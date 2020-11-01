@@ -12,7 +12,7 @@ $ docker build -t resizer:latest .
 ```
 ## Run
 ``` bash
-$ docker run -it --network host --name node-resizer resizer resizer:latest
+$ docker run -it --rm --network host --name resizer resizer:latest resizer
 ```
 
 ## Usage
