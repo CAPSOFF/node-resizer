@@ -38,15 +38,15 @@ auto main(int argc, char** argv) -> int {
             auto body_json = nlohmann::json::parse(body);
 
             if (body_json.find("input_jpeg") == body_json.end()) {
-                throw "input_jpeg is required";
+                throw std::runtime_error("input_jpeg is required");
             }
 
             if (body_json.find("desired_width") == body_json.end()) {
-                throw "desired_width is required";
+                throw std::runtime_error("desired_width is required");
             }
 
             if (body_json.find("desired_height") == body_json.end()) {
-                throw "desired_height is required";
+                throw std::runtime_error("desired_height is required");
             }
 
             auto jpeg_image = resizer->base64_to_mat(body_json["input_jpeg"]);
@@ -56,7 +56,6 @@ auto main(int argc, char** argv) -> int {
         } catch (std::exception& error) {
             response = set_error(400, error.what());
         }
-
         res.status = response["code"];
         res.set_content(response.dump(), "application/json");
     });

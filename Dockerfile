@@ -5,6 +5,7 @@ WORKDIR /tmp
 
 RUN apt-get -yq update \
     && DEBIAN_FRONTEND=noninteractive apt-get -yq --no-install-recommends install \
+    ca-certificates \
     libgtk-3-dev \
     libssl-dev \
     pkg-config \
